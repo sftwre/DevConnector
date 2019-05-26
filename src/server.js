@@ -18,6 +18,9 @@ mongoose
 // entry point for API
 const app = express();
 
+// init middleware
+app.use(express.json({ extended: false }));
+
 // define Routes
 app.use("/api/users", users);
 app.use("/api/profile", profile);
