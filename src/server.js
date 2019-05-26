@@ -26,7 +26,7 @@ app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
 
-app.get("/", (req, res) => res.send("Hello World! Isaac"));
+app.get("/", (req, res) => res.send("Hello World!"));
 
 const port = process.env.port || 5000;
 
