@@ -14,12 +14,12 @@
     "mongoose": "^5.4.19",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "validator": "^10.11.0"
+    "validator": "^10.11.0",
+    "express-validator": "^5.3.1"
   },
-
   "scripts": {
     "start": "node src/server.js",
-    "server":"nodemon src/server.js"
+    "server": "nodemon src/server.js"
   },
   "eslintConfig": {
     "extends": "eslint:recommended"
