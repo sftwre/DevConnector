@@ -5,12 +5,11 @@ const { check, validationResult } = require("express-validator/check");
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const jwt = require("jsonwebtoken");
+const config = require("config");
 
-// @route  GET api/users/test
-// @desc   Test users route
+// @route  POST api/users/
+// @desc   Register's a new user in the database if provided information is correct.
 // @access Public
-router.get("/test", (req, res) => res.json({ msg: "Users works" }));
-
 router.post(
   "/",
   [
@@ -35,6 +34,7 @@ router.post(
     try {
       let user = await User.findOne({ email });
 
+      // check if user already exists
       if (user) {
         return res
           .status(400)
@@ -62,8 +62,8 @@ router.post(
       // save user in db
       await user.save();
 
-      // return jsonwebtoken
-      const jwtSecret = require("../../config/keys").jwtSecret;
+      // generate a  jsonwebtoken
+      const jwtSecret = config.get("jwtSecret");
 
       const payload = {
         user: {

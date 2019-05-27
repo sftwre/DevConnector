@@ -1,5 +1,5 @@
-module.exports = {
-  mongoURI:
+{
+  "mongoURI":
     "mongodb+srv://ibuitrago:devconnector98@devconnector-sxork.mongodb.net/test?retryWrites=true",
-  jwtSecret: "mysecrettoken"
-};
+  "jwtSecret": "mysecrettoken"
+}
