@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator/check");
 
 // model imports
 const Profile = require("../../models/Profile");
+const User = require("../../models/User");
 
 // @route  GET api/profile/me
 // @desc   Get current users profile
