@@ -150,4 +150,34 @@ router.get("/user/:user_id", async (req, res) => {
   }
 });
 
+// @route  DELETE api/profile/
+// @desc   Delete profile, user, & post
+// @access Private
+router.delete("/", auth, async (req, res) => {
+  try {
+    // todo remove user's posts
+    // Remove profile
+    await Profile.findOneAndRemove({
+      user: req.user.id
+    });
+
+    // Remove user
+    await User.findOneAndRemove({
+      _id: req.user.id
+    });
+
+    if (!profile)
+      return res.status(400).json({ msg: "There is no profile for this user" });
+
+    res.json({ msg: "User deleted" });
+  } catch (err) {
+    console.error(err.message);
+
+    if (err.kind === "ObjectId") {
+      return res.status(400).json({ msg: "Profile not found" });
+    }
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;
