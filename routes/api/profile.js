@@ -5,7 +5,6 @@ const { check, validationResult } = require("express-validator/check");
 
 // model imports
 const Profile = require("../../models/Profile");
-const User = require("../../models/User");
 
 // @route  GET api/profile/me
 // @desc   Get current users profile
@@ -49,8 +48,6 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    console.log(req.body);
-
     const {
       company,
       website,
@@ -89,10 +86,10 @@ router.post(
     if (instagram) profileFields.social.instagram = instagram;
 
     try {
-      let profile = Profile.findOne({ user: req.user.id });
+      let profile = await Profile.findOne({ user: req.user.id });
 
-      // Update profile
-      if (profile != null) {
+      if (profile) {
+        // Update
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
@@ -102,11 +99,10 @@ router.post(
         return res.json(profile);
       }
 
-      // Create profile
+      // Create
       profile = new Profile(profileFields);
 
       await profile.save();
-
       res.json(profile);
     } catch (err) {
       console.error(err.message);
