@@ -279,7 +279,7 @@ router.put(
       check("degree", "Degree is required")
         .not()
         .isEmpty(),
-      check("fieldofStudy", "Field of study is required")
+      check("fieldofstudy", "Field of study is required")
         .not()
         .isEmpty(),
       check("from", "From date is required")
@@ -296,8 +296,8 @@ router.put(
 
     const {
       school,
-      degrees,
-      fieldOfStudy,
+      degree,
+      fieldofstudy,
       from,
       to,
       current,
@@ -306,8 +306,8 @@ router.put(
 
     const newEdu = {
       school,
-      degrees,
-      fieldOfStudy,
+      degree,
+      fieldofstudy,
       from,
       to,
       current,
@@ -329,4 +329,28 @@ router.put(
     }
   }
 );
+
+// @route   DELETE api/profile/education/:edu_id
+// @desc    Delete education from profile
+// @access  Private
+router.delete("/education/:edu_id", auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    // Get remove index
+    const removeIndex = profile.education
+      .map(item => item.id)
+      .indexOf(req.params.edu_id);
+
+    profile.education.splice(removeIndex, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 module.exports = router;
