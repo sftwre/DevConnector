@@ -20,7 +20,7 @@ const Login = () => {
     });
 
   /**
-   * Validates user input and sends it to the backend to create the account.
+   * Validates user input and authenticates the user.
    * @param e
    */
   const onSubmit = async e => {
