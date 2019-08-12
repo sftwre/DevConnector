@@ -4,7 +4,7 @@ import Moment from "react-moment";
 import moment from "moment";
 
 const ProfileExperience = ({
-  experience: { company, title, location, current, to, from, description }
+  experience: { company, title, to, from, description }
 }) => {
   return (
     <div>
