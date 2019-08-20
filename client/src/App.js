@@ -11,6 +11,7 @@ import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
+import Posts from "./components/posts/Posts";
 import AddExpierence from "./components/profile-forms/AddExpierence";
 import AddEducation from "./components/profile-forms/AddEducation";
 import "./App.css";
@@ -61,12 +62,12 @@ const App = () => {
                 path="/add-experience"
                 component={AddExpierence}
               />
-
               <PrivateRoute
                 exact
                 path="/add-education"
                 component={AddEducation}
               />
+              <PrivateRoute exact path="/posts" component={Posts} />
             </Switch>
           </section>
         </Fragment>
