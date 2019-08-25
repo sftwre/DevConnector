@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Moment from "react-moment";
 import moment from "moment";
 
 const ProfileEducation = ({
@@ -9,8 +8,8 @@ const ProfileEducation = ({
   <div>
     <h3 className="text-dark"> {school}</h3>
     <p>
-      <Moment format="MM/DD/YYYY"> {moment.utc(from)} </Moment> -
-      {!to ? "Now" : <Moment format="MM/DD/YYYY"> {moment.utc(to)}</Moment>}
+      {` ${moment(from).format("MM/DD/YYYY")}`} -
+      {!to ? "Now" : ` ${moment(to).format("MM/DD/YYYY")}`}
     </p>
     <p>
       <strong> Degree: </strong> {degree}
