@@ -1,0 +1,7 @@
+{
+  "mongoURI":
+  "mongodb+srv://ibuitrago:devconnector98@devconnector-sxork.mongodb.net/test?retryWrites=true",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "70d48c835b3ed8775d11",
+  "githubSecret" : "bee9fdd7de9db9b8cc7f108fda5792acc9ac41be"
+}
