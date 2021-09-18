@@ -1,3 +1,3 @@
-The following screenshots dislpay the main use cases of this app.
+Link to deployed application, https://shielded-caverns-82233.herokuapp.com/
+The application is hosted on heroku free tier, so it takes a minute to load.
 
-![Landing Page](https://drive.google.com/file/d/1Yd7pvSDFpzO1HPYoaWTCuM9z6OgyiA1h/view?usp=sharing)
